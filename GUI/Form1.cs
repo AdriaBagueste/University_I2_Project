@@ -15,12 +15,17 @@ namespace GUI
             // 
             // Form1
             // 
-            ClientSize = new Size(500, 416);
+            ClientSize = new Size(603, 541);
             Name = "Form1";
             ResumeLayout(false);
         }
 
         private void tabPage1_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void panel1_Paint(object sender, PaintEventArgs e)
         {
 
         }
