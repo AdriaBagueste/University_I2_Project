@@ -7,6 +7,8 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Project_libs", "Project_lib
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "GUI", "GUI\GUI.csproj", "{1A3C53CD-785E-480F-BF41-069E3E846663}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Console1", "Console1\Console1.csproj", "{C3AABDE7-0F8B-4795-A8E7-FAF8779C6540}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -21,6 +23,10 @@ Global
 		{1A3C53CD-785E-480F-BF41-069E3E846663}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{1A3C53CD-785E-480F-BF41-069E3E846663}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{1A3C53CD-785E-480F-BF41-069E3E846663}.Release|Any CPU.Build.0 = Release|Any CPU
+		{C3AABDE7-0F8B-4795-A8E7-FAF8779C6540}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{C3AABDE7-0F8B-4795-A8E7-FAF8779C6540}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{C3AABDE7-0F8B-4795-A8E7-FAF8779C6540}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{C3AABDE7-0F8B-4795-A8E7-FAF8779C6540}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

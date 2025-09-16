@@ -10,6 +10,7 @@ namespace Console1
     {
         static void Main(string[] args)
         {
+            Console.WriteLine("Dump");
         }
     }
 }
