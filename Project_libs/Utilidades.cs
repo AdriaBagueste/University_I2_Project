@@ -5,19 +5,18 @@ using System.Collections.Generic;
 
 namespace Project_libs
 {
-    class Libs
+    public class Libs
     {
         static void Main()
         {
             // Example: adding multiple flights
-            AddFlightToFile(new Flight { ID = "F123", Initial_position = 10.5f, Final_position = 25.75f });
-            AddFlightToFile(new Flight { ID = "F124", Initial_position = 15.0f, Final_position = 30.5f });
+            AddFlightToFile(new Flight { ID = "F123", Initial_position_x = 10.5f, Initial_position_y = 25.75f, Final_position_x = 16.5f, Final_position_y = 65.75f });
 
             Console.WriteLine("Press any key to exit...");
             Console.ReadKey();
         }
 
-        static void AddFlightToFile(Flight newFlight)
+        public static void AddFlightToFile(Flight newFlight)
         {
             string filePath = Path.Combine(AppDomain.CurrentDomain.BaseDirectory, "..\\..\\..\\flight.json");
             filePath = Path.GetFullPath(filePath);
@@ -66,7 +65,10 @@ namespace Project_libs
     public class Flight
     {
         public string ID { get; set; }
-        public float Initial_position { get; set; }
+        public float Initial_position_x { get; set; }
+        public float Initial_position_y { get; set; }
+        public float Final_position_x { get; set; }
+        public float Final_position_y { get; set; }
         public float Final_position { get; set; }
     }
 }

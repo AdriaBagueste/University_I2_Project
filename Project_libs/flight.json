@@ -1,27 +1,10 @@
 [
   {
     "ID": "F123",
-    "Initial_position": 10.5,
-    "Final_position": 25.75
-  },
-  {
-    "ID": "F123",
-    "Initial_position": 10.5,
-    "Final_position": 25.75
-  },
-  {
-    "ID": "F124",
-    "Initial_position": 15,
-    "Final_position": 30.5
-  },
-  {
-    "ID": "F123",
-    "Initial_position": 10.5,
-    "Final_position": 25.75
-  },
-  {
-    "ID": "F124",
-    "Initial_position": 15,
-    "Final_position": 30.5
+    "Initial_position_x": 10.5,
+    "Initial_position_y": 25.75,
+    "Final_position_x": 16.5,
+    "Final_position_y": 65.75,
+    "Final_position": 0
   }
 ]
