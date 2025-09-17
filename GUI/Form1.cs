@@ -201,28 +201,35 @@ namespace GUI
         {
             string flightID = Flight_ID_entry.Text;
 
+            // Declare variables outside so they are accessible later
+            float initialX, initialY, finalX, finalY;
+
             // Try parsing float values safely
-            if (float.TryParse(Flight_Initial_position_x_entry.Text, out float initialX) &&
-                float.TryParse(Flight_Initial_position_y_entry.Text, out float initialY) &&
-                float.TryParse(Flight_final_position_x_entry.Text, out float finalX) &&
-                float.TryParse(Flight_final_position_y_entry.Text, out float finalY))
+            if (float.TryParse(Flight_Initial_position_x_entry.Text, out initialX) &&
+                float.TryParse(Flight_Initial_position_y_entry.Text, out initialY) &&
+                float.TryParse(Flight_final_position_x_entry.Text, out finalX) &&
+                float.TryParse(Flight_final_position_y_entry.Text, out finalY))
             {
                 // All inputs are valid floats
                 MessageBox.Show($"Flight ID: {flightID}\n" +
                                 $"Initial Position: ({initialX}, {initialY})\n" +
                                 $"Final Position: ({finalX}, {finalY})");
 
-                // Here you can call your library to add the flight, e.g.:
-                // ProjectLib.AddFlight(flightID, initialX, initialY, finalX, finalY);
+                // Add flight to file using your library
+                Project_libs.Libs.AddFlightToFile(new Flight
+                {
+                    ID = flightID,
+                    Initial_position_x = initialX,
+                    Initial_position_y = initialY,
+                    Final_position_x = finalX,
+                    Final_position_y = finalY
+                });
             }
             else
             {
                 // If any parsing fails
                 MessageBox.Show("Please enter valid numeric values for positions.");
             }
-
-            Project_libs.Libs.AddFlightToFile(new Flight { ID = flightID, Initial_position = initialX, Final_position = 30.5f });
-
         }
 
         private void label1_Click(object sender, EventArgs e)
