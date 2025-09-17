@@ -5,5 +5,8 @@ using System.Collections.Generic;
 
 namespace Project_libs
 {
-    class main{ }
+    internal class Libs
+    {
+        
+    }
 }
