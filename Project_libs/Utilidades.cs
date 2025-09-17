@@ -10,7 +10,7 @@ namespace Project_libs
         static void Main()
         {
             // Example: adding multiple flights
-            AddFlightToFile(new Flight { ID = "F123", Initial_position_x = 10.5f, Initial_position_y = 25.75f, Final_position_x = 16.5f, Final_position_y = 65.75f });
+            AddFlightToFile(new Flight { ID = "F123", Company = "Iberia", Initial_position_x = 10.5f, Initial_position_y = 25.75f, Final_position_x = 16.5f, Final_position_y = 65.75f, speed = 10.5f });
 
             Console.WriteLine("Press any key to exit...");
             Console.ReadKey();
@@ -60,15 +60,18 @@ namespace Project_libs
 
             Console.WriteLine($"Added flight {newFlight.ID} to file: {filePath}");
         }
+
     }
 
     public class Flight
     {
         public string ID { get; set; }
+        public string Company { get; set; }
         public float Initial_position_x { get; set; }
         public float Initial_position_y { get; set; }
         public float Final_position_x { get; set; }
         public float Final_position_y { get; set; }
         public float Final_position { get; set; }
+        public float speed { get; set; }
     }
 }
