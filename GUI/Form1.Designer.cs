@@ -19,5 +19,9 @@
         private TextBox Flight_final_position_x_entry;
         private Label Company_Label;
         private TextBox Company_entry;
+        private PageSetupDialog pageSetupDialog1;
+        private Panel panel1;
+        private Label ManagerFlight_AddFlight_Label;
+        private Button Cancel_Button;
     }
 }

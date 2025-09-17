@@ -13,53 +13,93 @@ namespace GUI
         private void InitializeComponent()
         {
             Flight_ID_entry = new TextBox();
+            Company_entry = new TextBox();
             Flight_Initial_position_x_entry = new TextBox();
+            Flight_Initial_position_y_entry = new TextBox();
+            Flight_final_position_x_entry = new TextBox();
+            Flight_final_position_y_entry = new TextBox();
+            Speed_entry = new TextBox();
             Flight_ID_Label = new Label();
             Initial_position_Label = new Label();
             Final_position_Label = new Label();
-            Speed_entry = new TextBox();
             Speed_Label = new Label();
             Add_flight_button = new Button();
             label5 = new Label();
             label6 = new Label();
-            Flight_Initial_position_y_entry = new TextBox();
             label7 = new Label();
-            Flight_final_position_y_entry = new TextBox();
             label8 = new Label();
-            Flight_final_position_x_entry = new TextBox();
             Company_Label = new Label();
-            Company_entry = new TextBox();
+            pageSetupDialog1 = new PageSetupDialog();
+            panel1 = new Panel();
+            ManagerFlight_AddFlight_Label = new Label();
+            this.Cancel_Button = new Button();
+            panel1.SuspendLayout();
             SuspendLayout();
             // 
             // Flight_ID_entry
             // 
-            Flight_ID_entry.Location = new Point(135, 17);
+            Flight_ID_entry.Location = new Point(134, 9);
             Flight_ID_entry.Name = "Flight_ID_entry";
             Flight_ID_entry.Size = new Size(164, 23);
             Flight_ID_entry.TabIndex = 0;
             // 
+            // Company_entry
+            // 
+            Company_entry.Location = new Point(134, 38);
+            Company_entry.Name = "Company_entry";
+            Company_entry.Size = new Size(164, 23);
+            Company_entry.TabIndex = 1;
+            // 
             // Flight_Initial_position_x_entry
             // 
-            Flight_Initial_position_x_entry.Location = new Point(158, 103);
+            Flight_Initial_position_x_entry.Location = new Point(157, 95);
             Flight_Initial_position_x_entry.Name = "Flight_Initial_position_x_entry";
             Flight_Initial_position_x_entry.Size = new Size(56, 23);
-            Flight_Initial_position_x_entry.TabIndex = 1;
+            Flight_Initial_position_x_entry.TabIndex = 2;
             Flight_Initial_position_x_entry.TextChanged += textBox2_TextChanged;
+            // 
+            // Flight_Initial_position_y_entry
+            // 
+            Flight_Initial_position_y_entry.Location = new Point(245, 95);
+            Flight_Initial_position_y_entry.Name = "Flight_Initial_position_y_entry";
+            Flight_Initial_position_y_entry.Size = new Size(56, 23);
+            Flight_Initial_position_y_entry.TabIndex = 3;
+            // 
+            // Flight_final_position_x_entry
+            // 
+            Flight_final_position_x_entry.Location = new Point(157, 121);
+            Flight_final_position_x_entry.Name = "Flight_final_position_x_entry";
+            Flight_final_position_x_entry.Size = new Size(56, 23);
+            Flight_final_position_x_entry.TabIndex = 4;
+            // 
+            // Flight_final_position_y_entry
+            // 
+            Flight_final_position_y_entry.Location = new Point(245, 121);
+            Flight_final_position_y_entry.Name = "Flight_final_position_y_entry";
+            Flight_final_position_y_entry.Size = new Size(56, 23);
+            Flight_final_position_y_entry.TabIndex = 5;
+            // 
+            // Speed_entry
+            // 
+            Speed_entry.Location = new Point(137, 150);
+            Speed_entry.Name = "Speed_entry";
+            Speed_entry.Size = new Size(164, 23);
+            Speed_entry.TabIndex = 6;
             // 
             // Flight_ID_Label
             // 
             Flight_ID_Label.AutoSize = true;
-            Flight_ID_Label.Location = new Point(12, 20);
+            Flight_ID_Label.Location = new Point(11, 12);
             Flight_ID_Label.Name = "Flight_ID_Label";
             Flight_ID_Label.Size = new Size(51, 15);
-            Flight_ID_Label.TabIndex = 2;
+            Flight_ID_Label.TabIndex = 6;
             Flight_ID_Label.Text = "Flight ID";
             Flight_ID_Label.Click += label1_Click;
             // 
             // Initial_position_Label
             // 
             Initial_position_Label.AutoSize = true;
-            Initial_position_Label.Location = new Point(15, 103);
+            Initial_position_Label.Location = new Point(14, 95);
             Initial_position_Label.Name = "Initial_position_Label";
             Initial_position_Label.Size = new Size(82, 15);
             Initial_position_Label.TabIndex = 3;
@@ -69,24 +109,18 @@ namespace GUI
             // Final_position_Label
             // 
             Final_position_Label.AutoSize = true;
-            Final_position_Label.Location = new Point(15, 132);
+            Final_position_Label.Location = new Point(14, 124);
             Final_position_Label.Name = "Final_position_Label";
             Final_position_Label.Size = new Size(78, 15);
             Final_position_Label.TabIndex = 4;
             Final_position_Label.Text = "Final position";
             Final_position_Label.Click += label3_Click;
-            // 
-            // Speed_entry
-            // 
-            Speed_entry.Location = new Point(138, 158);
-            Speed_entry.Name = "Speed_entry";
-            Speed_entry.Size = new Size(164, 23);
-            Speed_entry.TabIndex = 7;
+
             // 
             // Speed_Label
             // 
             Speed_Label.AutoSize = true;
-            Speed_Label.Location = new Point(15, 161);
+            Speed_Label.Location = new Point(14, 153);
             Speed_Label.Name = "Speed_Label";
             Speed_Label.Size = new Size(39, 15);
             Speed_Label.TabIndex = 8;
@@ -94,7 +128,7 @@ namespace GUI
             // 
             // Add_flight_button
             // 
-            Add_flight_button.Location = new Point(138, 187);
+            Add_flight_button.Location = new Point(137, 179);
             Add_flight_button.Name = "Add_flight_button";
             Add_flight_button.Size = new Size(164, 23);
             Add_flight_button.TabIndex = 9;
@@ -102,10 +136,20 @@ namespace GUI
             Add_flight_button.UseVisualStyleBackColor = true;
             Add_flight_button.Click += Add_flight_button_click;
             // 
+            // Cancel_Button
+            // 
+            Cancel_Button.Location = new Point(14, 179);
+            Cancel_Button.Name = "Cancel_Button";
+            Cancel_Button.Size = new Size(121, 23);
+            Cancel_Button.TabIndex = 21;
+            Cancel_Button.Text = "Cancel";
+            Cancel_Button.UseVisualStyleBackColor = true;
+            Cancel_Button.Click += Cancel_Button_click;
+            // 
             // label5
             // 
             label5.AutoSize = true;
-            label5.Location = new Point(138, 106);
+            label5.Location = new Point(137, 98);
             label5.Name = "label5";
             label5.Size = new Size(14, 15);
             label5.TabIndex = 10;
@@ -115,91 +159,87 @@ namespace GUI
             // label6
             // 
             label6.AutoSize = true;
-            label6.Location = new Point(226, 106);
+            label6.Location = new Point(225, 98);
             label6.Name = "label6";
             label6.Size = new Size(14, 15);
             label6.TabIndex = 12;
             label6.Text = "Y";
             label6.Click += label6_Click;
             // 
-            // Flight_Initial_position_y_entry
-            // 
-            Flight_Initial_position_y_entry.Location = new Point(246, 103);
-            Flight_Initial_position_y_entry.Name = "Flight_Initial_position_y_entry";
-            Flight_Initial_position_y_entry.Size = new Size(56, 23);
-            Flight_Initial_position_y_entry.TabIndex = 11;
-            // 
             // label7
             // 
             label7.AutoSize = true;
-            label7.Location = new Point(226, 132);
+            label7.Location = new Point(225, 124);
             label7.Name = "label7";
             label7.Size = new Size(14, 15);
             label7.TabIndex = 16;
             label7.Text = "Y";
             // 
-            // Flight_final_position_y_entry
-            // 
-            Flight_final_position_y_entry.Location = new Point(246, 129);
-            Flight_final_position_y_entry.Name = "Flight_final_position_y_entry";
-            Flight_final_position_y_entry.Size = new Size(56, 23);
-            Flight_final_position_y_entry.TabIndex = 15;
-            // 
             // label8
             // 
             label8.AutoSize = true;
-            label8.Location = new Point(138, 132);
+            label8.Location = new Point(137, 124);
             label8.Name = "label8";
             label8.Size = new Size(14, 15);
             label8.TabIndex = 14;
             label8.Text = "X";
-            // 
-            // Flight_final_position_x_entry
-            // 
-            Flight_final_position_x_entry.Location = new Point(158, 129);
-            Flight_final_position_x_entry.Name = "Flight_final_position_x_entry";
-            Flight_final_position_x_entry.Size = new Size(56, 23);
-            Flight_final_position_x_entry.TabIndex = 13;
+
             // 
             // Company_Label
             // 
             Company_Label.AutoSize = true;
-            Company_Label.Location = new Point(12, 49);
+            Company_Label.Location = new Point(11, 41);
             Company_Label.Name = "Company_Label";
             Company_Label.Size = new Size(59, 15);
             Company_Label.TabIndex = 18;
             Company_Label.Text = "Company";
             Company_Label.Click += label9_Click;
             // 
-            // Company_entry
+            // panel1
             // 
-            Company_entry.Location = new Point(135, 46);
-            Company_entry.Name = "Company_entry";
-            Company_entry.Size = new Size(164, 23);
-            Company_entry.TabIndex = 17;
+            panel1.Controls.Add(this.Cancel_Button);
+            panel1.Controls.Add(Flight_final_position_x_entry);
+            panel1.Controls.Add(Company_Label);
+            panel1.Controls.Add(Flight_ID_entry);
+            panel1.Controls.Add(Company_entry);
+            panel1.Controls.Add(Flight_Initial_position_x_entry);
+            panel1.Controls.Add(label7);
+            panel1.Controls.Add(Flight_ID_Label);
+            panel1.Controls.Add(Flight_final_position_y_entry);
+            panel1.Controls.Add(Initial_position_Label);
+            panel1.Controls.Add(label8);
+            panel1.Controls.Add(Final_position_Label);
+            panel1.Controls.Add(Speed_entry);
+            panel1.Controls.Add(label6);
+            panel1.Controls.Add(Speed_Label);
+            panel1.Controls.Add(Flight_Initial_position_y_entry);
+            panel1.Controls.Add(Add_flight_button);
+            panel1.Controls.Add(label5);
+            panel1.Location = new Point(0, 18);
+            panel1.Name = "panel1";
+            panel1.Size = new Size(319, 209);
+            panel1.TabIndex = 19;
+            panel1.Paint += panel1_Paint_1;
+            // 
+            // ManagerFlight_AddFlight_Label
+            // 
+            ManagerFlight_AddFlight_Label.AutoSize = true;
+            ManagerFlight_AddFlight_Label.Location = new Point(0, 0);
+            ManagerFlight_AddFlight_Label.Name = "ManagerFlight_AddFlight_Label";
+            ManagerFlight_AddFlight_Label.Size = new Size(153, 15);
+            ManagerFlight_AddFlight_Label.TabIndex = 20;
+            ManagerFlight_AddFlight_Label.Text = "Flight Manager - Add Flight";
+            ManagerFlight_AddFlight_Label.Click += label1_Click_1;
             // 
             // Form1
             // 
-            ClientSize = new Size(369, 262);
-            Controls.Add(Company_Label);
-            Controls.Add(Company_entry);
-            Controls.Add(label7);
-            Controls.Add(Flight_final_position_y_entry);
-            Controls.Add(label8);
-            Controls.Add(Flight_final_position_x_entry);
-            Controls.Add(label6);
-            Controls.Add(Flight_Initial_position_y_entry);
-            Controls.Add(label5);
-            Controls.Add(Add_flight_button);
-            Controls.Add(Speed_Label);
-            Controls.Add(Speed_entry);
-            Controls.Add(Final_position_Label);
-            Controls.Add(Initial_position_Label);
-            Controls.Add(Flight_ID_Label);
-            Controls.Add(Flight_Initial_position_x_entry);
-            Controls.Add(Flight_ID_entry);
+            ClientSize = new Size(308, 227);
+            Controls.Add(ManagerFlight_AddFlight_Label);
+            Controls.Add(panel1);
             Name = "Form1";
             Load += Form1_Load;
+            panel1.ResumeLayout(false);
+            panel1.PerformLayout();
             ResumeLayout(false);
             PerformLayout();
         }
@@ -219,6 +259,10 @@ namespace GUI
 
         }
 
+        private void Cancel_Button_click(object sender, EventArgs e)
+        {
+            this.Close();
+        }
         private void Add_flight_button_click(object sender, EventArgs e)
         {
             string flightID = Flight_ID_entry.Text;
@@ -251,6 +295,8 @@ namespace GUI
                     Final_position_y = finalY,
                     speed = speed
                 });
+
+                this.Close();
             }
             else
             {
@@ -290,6 +336,16 @@ namespace GUI
         }
 
         private void label9_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void panel1_Paint_1(object sender, PaintEventArgs e)
+        {
+
+        }
+
+        private void label1_Click_1(object sender, EventArgs e)
         {
 
         }

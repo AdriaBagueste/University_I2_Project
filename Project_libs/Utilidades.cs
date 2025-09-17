@@ -61,7 +61,18 @@ namespace Project_libs
             Console.WriteLine($"Added flight {newFlight.ID} to file: {filePath}");
         }
 
+        public static void Conflict_Detector_Simulation(Flight FLight_1, Flight Flight_2, float SecurityDistance)
+        { 
+            int Framerate = 60;
+        }
+
+        public static Boolean Isthere_Conflict(Flight FLight_1, Flight Flight_2, float SecurityDistance)
+        {
+
+        }
     }
+
+
 
     public class Flight
     {
@@ -73,5 +84,7 @@ namespace Project_libs
         public float Final_position_y { get; set; }
         public float Final_position { get; set; }
         public float speed { get; set; }
+
+       
     }
 }
