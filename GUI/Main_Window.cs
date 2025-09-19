@@ -10,9 +10,9 @@ using System.Windows.Forms;
 
 namespace GUI
 {
-    public partial class Form2 : Form
+    public partial class Main_Window : Form
     {
-        public Form2()
+        public Main_Window()
         {
             InitializeComponent();
             this.WindowState = FormWindowState.Maximized;

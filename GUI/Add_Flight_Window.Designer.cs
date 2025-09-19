@@ -1,6 +1,6 @@
 ﻿namespace GUI
 {
-    partial class Form1
+    partial class Add_Flight_Window
     {
         private TextBox Flight_ID_entry;
         private TextBox Flight_Initial_position_x_entry;

@@ -3,9 +3,9 @@ using Project_libs;
 
 namespace GUI
 {
-    public partial class Form1 : Form
+    public partial class Add_Flight_Window : Form
     {
-        public Form1()
+        public Add_Flight_Window()
         {
             InitializeComponent();
         }

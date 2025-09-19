@@ -2,6 +2,8 @@
 using System.IO;
 using System.Text.Json;
 using System.Collections.Generic;
+using System.Runtime.CompilerServices;
+using System.Dynamic;
 
 namespace Project_libs
 {
@@ -10,7 +12,7 @@ namespace Project_libs
         static void Main()
         {
             // Example: adding multiple flights
-            AddFlightToFile(new Flight { ID = "F123", Company = "Iberia", Initial_position_x = 10.5f, Initial_position_y = 25.75f, Final_position_x = 16.5f, Final_position_y = 65.75f, speed = 10.5f });
+            AddFlightToFile(new Flight { ID = "F123", Company = "Iberia", Initial_position_x = 10.5f, Initial_position_y = 25.75f, Final_position_x = 16.5f, Final_position_y = 65.75f, Speed = 10.5f });
 
             Console.WriteLine("Press any key to exit...");
             Console.ReadKey();
@@ -68,7 +70,7 @@ namespace Project_libs
 
         public static Boolean Isthere_Conflict(Flight FLight_1, Flight Flight_2, float SecurityDistance)
         {
-
+            return false;
         }
     }
 
@@ -83,8 +85,15 @@ namespace Project_libs
         public float Final_position_x { get; set; }
         public float Final_position_y { get; set; }
         public float Final_position { get; set; }
-        public float speed { get; set; }
+        public float Speed { get; set; }    
+        public float FlightDistance => GetDistance();
 
-       
+        private float GetDistance()
+        {
+            float dx = this.Final_position_x - this.Initial_position_x;
+            float dy = this.Final_position_y - this.Initial_position_y;
+            return (float)Math.Sqrt(dx * dx + dy * dy);
+        }
+
     }
 }

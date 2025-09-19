@@ -1,6 +1,6 @@
 ﻿namespace GUI
 {
-    partial class Form2
+    partial class Main_Window
     {
         /// <summary>
         /// Required designer variable.
