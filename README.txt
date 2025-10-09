@@ -22,3 +22,4 @@ MEJORAS:
 - que el usuario defina la distancia de seguridad (de momento es = 10)
 - que en vez de un punto sea un avión (ez)
 - mostrar el id o algo asi encima del avión o al pasar el cursor por encima ns
+dwda

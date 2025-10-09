@@ -1,6 +1,7 @@
 using FlightLib;
 using GUI;
 using System.Diagnostics.Eventing.Reader;
+using System.Drawing.Text;
 using System.Windows.Forms;
 
 namespace Interface
@@ -11,9 +12,36 @@ namespace Interface
         PictureBox[] misPics = new PictureBox[100];
         int numPics = 0;
         bool press = false;
+        double distanciaSeguridad = 10;
+
         public Main()
         {
             InitializeComponent();
+            reloj.Interval = 100;
+        }
+
+        private void config_change()
+        {
+            if (float.TryParse(Tick_speed_entry.Text, out float tickSpeedPerSecond) && tickSpeedPerSecond > 0 && float.TryParse(Safe_distance_entry.Text, out float Safe_distance) && Safe_distance > 0)
+            {
+                int tickIntervalMs = (int)(1000 / tickSpeedPerSecond);
+
+
+                reloj.Interval = tickIntervalMs;
+                distanciaSeguridad = Safe_distance;
+
+                Tick_speed_info_label.Text = $"Velocidad del reloj: {tickSpeedPerSecond} Ticks/segundo";
+                Safe_distance_info_label.Text = $"Distancia de seguridad: {Safe_distance} metros";
+
+
+            }
+            else
+            {
+                MessageBox.Show("Entra un número positivo válido",
+                    "Input inválido",
+                    MessageBoxButtons.OK,
+                    MessageBoxIcon.Warning);
+            }
         }
 
         private void miPanel_MouseMove(object sender, MouseEventArgs e)
@@ -33,49 +61,109 @@ namespace Interface
         //  misPics[i].Location = new Point(FlightList.Dame(i).GetX(), FlightList.Dame(i).GetY());
         //}
 
-        private void button2_Click(object sender, EventArgs e)
+        private void Move_button_click(object sender, EventArgs e)
         {
-            reloj.Interval = 100; //milisegundos
             if (press == false)
             {
                 reloj.Start();
-                Automatico_button.Text = "Parar";
+                Move_button.Text = "Parar";
                 press = true;
             }
             else
             {
                 reloj.Stop();
-                Automatico_button.Text = "Automatico";
+                Move_button.Text = "Mover";
                 press = false;
             }
         }
-
-        private void reloj_Tick(object sender, EventArgs e) //MEJORA: Poder decidir durante cuanto tiempo quieres que se haga la simulacion
+        private void reloj_Tick(object sender, EventArgs e)
         {
             FlightList.Mover(1);
-            double distanciaSeguridad = 10; //MEJORA: el usuario puede decidir la distancia de seguridad
             bool[,] conflictos = FlightList.Conflicto(distanciaSeguridad);
+
             for (int i = 0; i < numPics; i++)
             {
                 FlightPlan vuelo = FlightList.GetFlightPlan(i);
-                misPics[i].Location = new Point((int)vuelo.getCurrentPosition().GetX(), (int)vuelo.getCurrentPosition().GetY());
+                if (vuelo == null) continue;
 
-                //aqui detecto conflictos i tal
+                misPics[i].Location = new Point(
+                    (int)vuelo.getCurrentPosition().GetX(),
+                    (int)vuelo.getCurrentPosition().GetY()
+                );
+
                 bool enConflicto = false;
                 for (int j = 0; j < numPics; j++)
                 {
                     if (i != j && conflictos[i, j])
                     {
                         enConflicto = true;
-                        break; // con que haya un conflicto yasirve
+                        break;
                     }
                 }
 
-                if (enConflicto)
-                    misPics[i].BackColor = Color.Yellow;
-                else
-                    misPics[i].BackColor = Color.Red;
+                misPics[i].BackColor = enConflicto ? Color.Yellow : Color.Red;
+            }
 
+            DibujarTrayectorias();
+
+            DibujarDistanciaSeguridad(distanciaSeguridad);
+        }
+
+        private void DibujarTrayectorias()
+        {
+            using (Graphics g = miPanel.CreateGraphics())
+            {
+                g.Clear(miPanel.BackColor);
+
+                using (Pen pen = new Pen(Color.Blue, 2))
+                {
+                    for (int i = 0; i < numPics; i++)
+                    {
+                        FlightPlan vuelo = FlightList.GetFlightPlan(i);
+                        if (vuelo == null)
+                            continue;
+
+                        Point origen = new Point(
+                            (int)vuelo.getCurrentPosition().GetX(),
+                            (int)vuelo.getCurrentPosition().GetY()
+                        );
+
+                        Point destino = new Point(
+                            (int)vuelo.getFinalPosition().GetX(),
+                            (int)vuelo.getFinalPosition().GetY()
+                        );
+
+                        g.DrawLine(pen, origen, destino);
+                    }
+                }
+            }
+        }
+
+        private void DibujarDistanciaSeguridad(double distanciaSeguridad)
+        {
+            using (Graphics g = miPanel.CreateGraphics())
+            {
+                using (Pen pen = new Pen(Color.Green, 1))
+                {
+                    pen.DashStyle = System.Drawing.Drawing2D.DashStyle.Dash;
+
+                    for (int i = 0; i < numPics; i++)
+                    {
+                        FlightPlan vuelo = FlightList.GetFlightPlan(i);
+                        if (vuelo == null)
+                            continue;
+
+
+                        double x = vuelo.getCurrentPosition().GetX();
+                        double y = vuelo.getCurrentPosition().GetY();
+
+                        float diametro = (float)(distanciaSeguridad * 2);
+                        float esquinaX = (float)(x - distanciaSeguridad);
+                        float esquinaY = (float)(y - distanciaSeguridad);
+
+                        g.DrawEllipse(pen, esquinaX, esquinaY, diametro, diametro);
+                    }
+                }
             }
         }
 
@@ -102,6 +190,31 @@ namespace Interface
         }
 
         private void Principal_Load(object sender, EventArgs e)
+        {
+            this.WindowState = FormWindowState.Maximized;
+        }
+
+        private void tableLayoutPanel1_Paint(object sender, PaintEventArgs e)
+        {
+
+        }
+
+        private void miPanel_Paint(object sender, PaintEventArgs e)
+        {
+
+        }
+
+        private void textBox1_TextChanged(object sender, EventArgs e)
+        {
+
+        }
+
+        private void Config_submit_button_Click(object sender, EventArgs e)
+        {
+            config_change();
+        }
+
+        private void Tick_speed_label_Click(object sender, EventArgs e)
         {
 
         }
