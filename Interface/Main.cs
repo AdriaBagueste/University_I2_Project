@@ -61,18 +61,18 @@ namespace Interface
         //  misPics[i].Location = new Point(FlightList.Dame(i).GetX(), FlightList.Dame(i).GetY());
         //}
 
-        private void Move_button_click(object sender, EventArgs e)
+        private void Automatic_button_click(object sender, EventArgs e)
         {
             if (press == false)
             {
                 reloj.Start();
-                Move_button.Text = "Parar";
+                Automatic_button.Text = "Parar";
                 press = true;
             }
             else
             {
                 reloj.Stop();
-                Move_button.Text = "Mover";
+                Automatic_button.Text = "Automatico";
                 press = false;
             }
         }
@@ -217,6 +217,27 @@ namespace Interface
         private void Tick_speed_label_Click(object sender, EventArgs e)
         {
 
+        }
+
+        private void Move_button_click(object sender, EventArgs e)
+        {
+            FlightList.Mover(1);
+
+            for (int i = 0; i < numPics; i++)
+            {
+                FlightPlan vuelo = FlightList.GetFlightPlan(i);
+                if (vuelo == null) continue;
+
+                misPics[i].Location = new Point(
+                    (int)vuelo.getCurrentPosition().GetX(),
+                    (int)vuelo.getCurrentPosition().GetY()
+                );
+
+                DibujarTrayectorias();
+
+                DibujarDistanciaSeguridad(distanciaSeguridad);
+
+            }
         }
     }
 }

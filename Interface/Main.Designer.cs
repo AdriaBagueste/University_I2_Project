@@ -39,14 +39,16 @@ namespace Interface
             nuevoPuntoToolStripMenuItem = new ToolStripMenuItem();
             NuevoPunto_Stripmenu_button = new ToolStripMenuItem();
             ListaPuntos_StripMenu_Button = new ToolStripMenuItem();
-            Move_button = new Button();
+            Automatic_button = new Button();
             reloj = new System.Windows.Forms.Timer(components);
             tableLayoutPanel1 = new TableLayoutPanel();
             panel1 = new Panel();
             tableLayoutPanel2 = new TableLayoutPanel();
             panel2 = new Panel();
+            button1 = new Button();
             Controles_label = new Label();
             panel3 = new Panel();
+            Safe_distance_info_label = new Label();
             Tick_speed_info_label = new Label();
             Info_label = new Label();
             panel4 = new Panel();
@@ -58,7 +60,7 @@ namespace Interface
             Tick_speed_entry = new TextBox();
             Config_submit_button = new Button();
             Config_label = new Label();
-            Safe_distance_info_label = new Label();
+            button2 = new Button();
             menuStrip1.SuspendLayout();
             tableLayoutPanel1.SuspendLayout();
             tableLayoutPanel2.SuspendLayout();
@@ -122,16 +124,16 @@ namespace Interface
             ListaPuntos_StripMenu_Button.Text = "Listar Puntos";
             ListaPuntos_StripMenu_Button.Click += listarPuntosToolStripMenuItem_Click;
             // 
-            // Move_button
+            // Automatic_button
             // 
-            Move_button.Location = new Point(0, 19);
-            Move_button.Margin = new Padding(2);
-            Move_button.Name = "Move_button";
-            Move_button.Size = new Size(101, 25);
-            Move_button.TabIndex = 8;
-            Move_button.Text = "Mover";
-            Move_button.UseVisualStyleBackColor = true;
-            Move_button.Click += Move_button_click;
+            Automatic_button.Location = new Point(64, 19);
+            Automatic_button.Margin = new Padding(2);
+            Automatic_button.Name = "Automatic_button";
+            Automatic_button.Size = new Size(101, 25);
+            Automatic_button.TabIndex = 8;
+            Automatic_button.Text = "Automático";
+            Automatic_button.UseVisualStyleBackColor = true;
+            Automatic_button.Click += Automatic_button_click;
             // 
             // reloj
             // 
@@ -183,12 +185,24 @@ namespace Interface
             // panel2
             // 
             panel2.BorderStyle = BorderStyle.FixedSingle;
-            panel2.Controls.Add(Move_button);
+            panel2.Controls.Add(button2);
+            panel2.Controls.Add(button1);
+            panel2.Controls.Add(Automatic_button);
             panel2.Controls.Add(Controles_label);
             panel2.Location = new Point(3, 3);
             panel2.Name = "panel2";
             panel2.Size = new Size(711, 83);
             panel2.TabIndex = 2;
+            // 
+            // button1
+            // 
+            button1.Location = new Point(-1, 20);
+            button1.Name = "button1";
+            button1.Size = new Size(60, 23);
+            button1.TabIndex = 9;
+            button1.Text = "Mover";
+            button1.UseVisualStyleBackColor = true;
+            button1.Click += Move_button_click;
             // 
             // Controles_label
             // 
@@ -210,6 +224,16 @@ namespace Interface
             panel3.Name = "panel3";
             panel3.Size = new Size(241, 83);
             panel3.TabIndex = 3;
+            // 
+            // Safe_distance_info_label
+            // 
+            Safe_distance_info_label.AutoSize = true;
+            Safe_distance_info_label.BorderStyle = BorderStyle.FixedSingle;
+            Safe_distance_info_label.Location = new Point(0, 34);
+            Safe_distance_info_label.Name = "Safe_distance_info_label";
+            Safe_distance_info_label.Size = new Size(174, 17);
+            Safe_distance_info_label.TabIndex = 2;
+            Safe_distance_info_label.Text = "Distancia de seguridad:  metros";
             // 
             // Tick_speed_info_label
             // 
@@ -286,9 +310,9 @@ namespace Interface
             Tick_speed_label.AutoSize = true;
             Tick_speed_label.Location = new Point(-1, 28);
             Tick_speed_label.Name = "Tick_speed_label";
-            Tick_speed_label.Size = new Size(143, 15);
+            Tick_speed_label.Size = new Size(146, 15);
             Tick_speed_label.TabIndex = 3;
-            Tick_speed_label.Text = "Velocidad del relo (1-100):";
+            Tick_speed_label.Text = "Velocidad del reloj (1-100):";
             Tick_speed_label.Click += Tick_speed_label_Click;
             // 
             // Tick_speed_entry
@@ -318,20 +342,20 @@ namespace Interface
             Config_label.TabIndex = 0;
             Config_label.Text = "Configuración del simulador";
             // 
-            // Safe_distance_info_label
+            // button2
             // 
-            Safe_distance_info_label.AutoSize = true;
-            Safe_distance_info_label.BorderStyle = BorderStyle.FixedSingle;
-            Safe_distance_info_label.Location = new Point(0, 34);
-            Safe_distance_info_label.Name = "Safe_distance_info_label";
-            Safe_distance_info_label.Size = new Size(174, 17);
-            Safe_distance_info_label.TabIndex = 2;
-            Safe_distance_info_label.Text = "Distancia de seguridad:  metros";
+            button2.Location = new Point(327, 32);
+            button2.Name = "button2";
+            button2.Size = new Size(75, 23);
+            button2.TabIndex = 10;
+            button2.Text = "button2";
+            button2.UseVisualStyleBackColor = true;
             // 
             // Main
             // 
             AutoScaleDimensions = new SizeF(7F, 15F);
             AutoScaleMode = AutoScaleMode.Font;
+            BackColor = SystemColors.Control;
             ClientSize = new Size(1904, 1041);
             Controls.Add(tableLayoutPanel1);
             Controls.Add(menuStrip1);
@@ -361,7 +385,7 @@ namespace Interface
         private Label posicionLbl;
         private MenuStrip menuStrip1;
         private ToolStripMenuItem nuevoPuntoToolStripMenuItem;
-        private Button Move_button;
+        private Button Automatic_button;
         private System.Windows.Forms.Timer reloj;
         private ToolStripMenuItem NuevoPunto_Stripmenu_button;
         private ToolStripMenuItem ListaPuntos_StripMenu_Button;
@@ -383,5 +407,7 @@ namespace Interface
         private TextBox Safe_distance_entry;
         private Label Tick_speed_info_label;
         private Label Safe_distance_info_label;
+        private Button button1;
+        private Button button2;
     }
 }

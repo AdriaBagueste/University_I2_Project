@@ -13,6 +13,8 @@ namespace FlightLib
 
         string id; // identificador
 
+        Position initialPosition; //posicion inicial
+
         Position currentPosition; // posicion actual
 
         Position finalPosition; // posicion final
@@ -23,6 +25,7 @@ namespace FlightLib
         public FlightPlan(string id, double cpx, double cpy, double fpx, double fpy, double velocidad)
         {
             this.id = id;
+            this.initialPosition = new Position(cpx, cpy);
             this.currentPosition = new Position(cpx, cpy);
             this.finalPosition = new Position(fpx, fpy);
             this.velocidad = velocidad;
@@ -65,6 +68,11 @@ namespace FlightLib
         }
 
         // Hacer un método que diga si un vuelo ha llegado a su destino.
+
+        public void Restart()
+        {
+            this.currentPosition = this.initialPosition;
+        }
         public bool EstaDestino()
         {
             bool resultado = false;
