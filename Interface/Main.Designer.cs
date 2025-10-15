@@ -45,9 +45,12 @@ namespace Interface
             panel1 = new Panel();
             tableLayoutPanel2 = new TableLayoutPanel();
             panel2 = new Panel();
+            Presimulacion_conflict_button = new Button();
+            Restart_button = new Button();
             button1 = new Button();
             Controles_label = new Label();
             panel3 = new Panel();
+            Conflicto_label = new Label();
             Safe_distance_info_label = new Label();
             Tick_speed_info_label = new Label();
             Info_label = new Label();
@@ -60,32 +63,38 @@ namespace Interface
             Tick_speed_entry = new TextBox();
             Config_submit_button = new Button();
             Config_label = new Label();
-            button2 = new Button();
+            panel5 = new Panel();
+            Flights_View = new DataGridView();
+            panel6 = new Panel();
+            label1 = new Label();
+            Import_flightplan_button = new Button();
             menuStrip1.SuspendLayout();
             tableLayoutPanel1.SuspendLayout();
             tableLayoutPanel2.SuspendLayout();
             panel2.SuspendLayout();
             panel3.SuspendLayout();
             panel4.SuspendLayout();
+            panel5.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)Flights_View).BeginInit();
+            panel6.SuspendLayout();
             SuspendLayout();
             // 
             // miPanel
             // 
             miPanel.BackColor = SystemColors.AppWorkspace;
             miPanel.Font = new System.Drawing.Font("Segoe UI", 16F, FontStyle.Regular, GraphicsUnit.Point, 0);
-            miPanel.Location = new Point(374, 31);
+            miPanel.Location = new Point(376, 31);
             miPanel.Margin = new Padding(2);
             miPanel.Name = "miPanel";
             miPanel.Size = new Size(966, 785);
             miPanel.TabIndex = 0;
-            miPanel.Paint += miPanel_Paint;
             miPanel.MouseLeave += miPanel_MouseLeave;
             miPanel.MouseMove += miPanel_MouseMove;
             // 
             // posicionLbl
             // 
             posicionLbl.BorderStyle = BorderStyle.FixedSingle;
-            posicionLbl.Location = new Point(374, 0);
+            posicionLbl.Location = new Point(376, 0);
             posicionLbl.Margin = new Padding(2, 0, 2, 0);
             posicionLbl.Name = "posicionLbl";
             posicionLbl.Size = new Size(966, 29);
@@ -122,7 +131,6 @@ namespace Interface
             ListaPuntos_StripMenu_Button.Name = "ListaPuntos_StripMenu_Button";
             ListaPuntos_StripMenu_Button.Size = new Size(144, 22);
             ListaPuntos_StripMenu_Button.Text = "Listar Puntos";
-            ListaPuntos_StripMenu_Button.Click += listarPuntosToolStripMenuItem_Click;
             // 
             // Automatic_button
             // 
@@ -144,11 +152,14 @@ namespace Interface
             tableLayoutPanel1.ColumnCount = 3;
             tableLayoutPanel1.ColumnStyles.Add(new ColumnStyle(SizeType.Percent, 27.7397251F));
             tableLayoutPanel1.ColumnStyles.Add(new ColumnStyle(SizeType.Percent, 72.26028F));
-            tableLayoutPanel1.ColumnStyles.Add(new ColumnStyle(SizeType.Absolute, 561F));
+            tableLayoutPanel1.ColumnStyles.Add(new ColumnStyle(SizeType.Absolute, 555F));
             tableLayoutPanel1.Controls.Add(panel1, 0, 1);
             tableLayoutPanel1.Controls.Add(miPanel, 1, 1);
             tableLayoutPanel1.Controls.Add(posicionLbl, 1, 0);
             tableLayoutPanel1.Controls.Add(tableLayoutPanel2, 1, 2);
+            tableLayoutPanel1.Controls.Add(panel5, 2, 1);
+            tableLayoutPanel1.Controls.Add(panel6, 2, 0);
+            tableLayoutPanel1.Controls.Add(Import_flightplan_button, 2, 2);
             tableLayoutPanel1.Location = new Point(0, 27);
             tableLayoutPanel1.Name = "tableLayoutPanel1";
             tableLayoutPanel1.RowCount = 3;
@@ -157,7 +168,6 @@ namespace Interface
             tableLayoutPanel1.RowStyles.Add(new RowStyle(SizeType.Absolute, 196F));
             tableLayoutPanel1.Size = new Size(1904, 1015);
             tableLayoutPanel1.TabIndex = 9;
-            tableLayoutPanel1.Paint += tableLayoutPanel1_Paint;
             // 
             // panel1
             // 
@@ -174,7 +184,7 @@ namespace Interface
             tableLayoutPanel2.Controls.Add(panel2, 0, 0);
             tableLayoutPanel2.Controls.Add(panel3, 1, 0);
             tableLayoutPanel2.Controls.Add(panel4, 0, 1);
-            tableLayoutPanel2.Location = new Point(375, 821);
+            tableLayoutPanel2.Location = new Point(377, 821);
             tableLayoutPanel2.Name = "tableLayoutPanel2";
             tableLayoutPanel2.RowCount = 2;
             tableLayoutPanel2.RowStyles.Add(new RowStyle(SizeType.Percent, 46.59686F));
@@ -185,7 +195,8 @@ namespace Interface
             // panel2
             // 
             panel2.BorderStyle = BorderStyle.FixedSingle;
-            panel2.Controls.Add(button2);
+            panel2.Controls.Add(Presimulacion_conflict_button);
+            panel2.Controls.Add(Restart_button);
             panel2.Controls.Add(button1);
             panel2.Controls.Add(Automatic_button);
             panel2.Controls.Add(Controles_label);
@@ -193,6 +204,26 @@ namespace Interface
             panel2.Name = "panel2";
             panel2.Size = new Size(711, 83);
             panel2.TabIndex = 2;
+            // 
+            // Presimulacion_conflict_button
+            // 
+            Presimulacion_conflict_button.Location = new Point(251, 20);
+            Presimulacion_conflict_button.Name = "Presimulacion_conflict_button";
+            Presimulacion_conflict_button.Size = new Size(75, 23);
+            Presimulacion_conflict_button.TabIndex = 11;
+            Presimulacion_conflict_button.Text = "Conflicto?";
+            Presimulacion_conflict_button.UseVisualStyleBackColor = true;
+            Presimulacion_conflict_button.Click += Presimulacion_conflict_button_Click;
+            // 
+            // Restart_button
+            // 
+            Restart_button.Location = new Point(170, 20);
+            Restart_button.Name = "Restart_button";
+            Restart_button.Size = new Size(75, 23);
+            Restart_button.TabIndex = 10;
+            Restart_button.Text = "Reiniciar";
+            Restart_button.UseVisualStyleBackColor = true;
+            Restart_button.Click += Restart_button_Click;
             // 
             // button1
             // 
@@ -217,6 +248,7 @@ namespace Interface
             // panel3
             // 
             panel3.BorderStyle = BorderStyle.FixedSingle;
+            panel3.Controls.Add(Conflicto_label);
             panel3.Controls.Add(Safe_distance_info_label);
             panel3.Controls.Add(Tick_speed_info_label);
             panel3.Controls.Add(Info_label);
@@ -225,35 +257,45 @@ namespace Interface
             panel3.Size = new Size(241, 83);
             panel3.TabIndex = 3;
             // 
+            // Conflicto_label
+            // 
+            Conflicto_label.BorderStyle = BorderStyle.FixedSingle;
+            Conflicto_label.Location = new Point(0, 51);
+            Conflicto_label.Name = "Conflicto_label";
+            Conflicto_label.Size = new Size(240, 31);
+            Conflicto_label.TabIndex = 3;
+            Conflicto_label.Text = "NO HAY CONFLICTO";
+            Conflicto_label.TextAlign = ContentAlignment.MiddleCenter;
+            // 
             // Safe_distance_info_label
             // 
-            Safe_distance_info_label.AutoSize = true;
             Safe_distance_info_label.BorderStyle = BorderStyle.FixedSingle;
             Safe_distance_info_label.Location = new Point(0, 34);
             Safe_distance_info_label.Name = "Safe_distance_info_label";
-            Safe_distance_info_label.Size = new Size(174, 17);
+            Safe_distance_info_label.Size = new Size(240, 17);
             Safe_distance_info_label.TabIndex = 2;
-            Safe_distance_info_label.Text = "Distancia de seguridad:  metros";
+            Safe_distance_info_label.Text = "Distancia de seguridad: 10 metros";
+            Safe_distance_info_label.TextAlign = ContentAlignment.MiddleCenter;
             // 
             // Tick_speed_info_label
             // 
-            Tick_speed_info_label.AutoSize = true;
             Tick_speed_info_label.BorderStyle = BorderStyle.FixedSingle;
             Tick_speed_info_label.Location = new Point(0, 17);
             Tick_speed_info_label.Name = "Tick_speed_info_label";
-            Tick_speed_info_label.Size = new Size(191, 17);
+            Tick_speed_info_label.Size = new Size(240, 17);
             Tick_speed_info_label.TabIndex = 1;
-            Tick_speed_info_label.Text = "Velocidad del reloj:  Ticks/segundo";
+            Tick_speed_info_label.Text = "Velocidad del reloj: 100 Ticks/segundo";
+            Tick_speed_info_label.TextAlign = ContentAlignment.MiddleCenter;
             // 
             // Info_label
             // 
-            Info_label.AutoSize = true;
             Info_label.BorderStyle = BorderStyle.FixedSingle;
             Info_label.Location = new Point(0, 0);
             Info_label.Name = "Info_label";
-            Info_label.Size = new Size(149, 17);
+            Info_label.Size = new Size(240, 17);
             Info_label.TabIndex = 0;
             Info_label.Text = "Información del simulador";
+            Info_label.TextAlign = ContentAlignment.MiddleCenter;
             // 
             // panel4
             // 
@@ -313,7 +355,6 @@ namespace Interface
             Tick_speed_label.Size = new Size(146, 15);
             Tick_speed_label.TabIndex = 3;
             Tick_speed_label.Text = "Velocidad del reloj (1-100):";
-            Tick_speed_label.Click += Tick_speed_label_Click;
             // 
             // Tick_speed_entry
             // 
@@ -342,14 +383,53 @@ namespace Interface
             Config_label.TabIndex = 0;
             Config_label.Text = "Configuración del simulador";
             // 
-            // button2
+            // panel5
             // 
-            button2.Location = new Point(327, 32);
-            button2.Name = "button2";
-            button2.Size = new Size(75, 23);
-            button2.TabIndex = 10;
-            button2.Text = "button2";
-            button2.UseVisualStyleBackColor = true;
+            panel5.Controls.Add(Flights_View);
+            panel5.Location = new Point(1351, 32);
+            panel5.Name = "panel5";
+            panel5.Size = new Size(550, 783);
+            panel5.TabIndex = 7;
+            // 
+            // Flights_View
+            // 
+            Flights_View.ColumnHeadersHeightSizeMode = DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            Flights_View.Location = new Point(3, 3);
+            Flights_View.Name = "Flights_View";
+            Flights_View.Size = new Size(547, 777);
+            Flights_View.TabIndex = 0;
+            Flights_View.CellClick += Flights_View_CellClick; 
+
+            // 
+            // panel6
+            // 
+            panel6.Controls.Add(label1);
+            panel6.Location = new Point(1351, 3);
+            panel6.Name = "panel6";
+            panel6.Size = new Size(550, 23);
+            panel6.TabIndex = 8;
+            // 
+            // label1
+            // 
+            label1.Anchor = AnchorStyles.None;
+            label1.BorderStyle = BorderStyle.FixedSingle;
+            label1.Location = new Point(3, 0);
+            label1.Name = "label1";
+            label1.Size = new Size(547, 26);
+            label1.TabIndex = 0;
+            label1.Text = "Flights information";
+            label1.TextAlign = ContentAlignment.MiddleCenter;
+            // 
+            // Import_flightplan_button
+            // 
+            Import_flightplan_button.ImageAlign = ContentAlignment.BottomLeft;
+            Import_flightplan_button.Location = new Point(1351, 821);
+            Import_flightplan_button.Name = "Import_flightplan_button";
+            Import_flightplan_button.Size = new Size(75, 23);
+            Import_flightplan_button.TabIndex = 9;
+            Import_flightplan_button.Text = "Importar planes";
+            Import_flightplan_button.UseVisualStyleBackColor = true;
+            Import_flightplan_button.Click += Import_flightplan_button_Click;
             // 
             // Main
             // 
@@ -364,7 +444,7 @@ namespace Interface
             Name = "Main";
             Text = "Principal";
             WindowState = FormWindowState.Maximized;
-            Load += Principal_Load;
+            Load += Main_Load;
             menuStrip1.ResumeLayout(false);
             menuStrip1.PerformLayout();
             tableLayoutPanel1.ResumeLayout(false);
@@ -372,9 +452,11 @@ namespace Interface
             panel2.ResumeLayout(false);
             panel2.PerformLayout();
             panel3.ResumeLayout(false);
-            panel3.PerformLayout();
             panel4.ResumeLayout(false);
             panel4.PerformLayout();
+            panel5.ResumeLayout(false);
+            ((System.ComponentModel.ISupportInitialize)Flights_View).EndInit();
+            panel6.ResumeLayout(false);
             ResumeLayout(false);
             PerformLayout();
         }
@@ -408,6 +490,13 @@ namespace Interface
         private Label Tick_speed_info_label;
         private Label Safe_distance_info_label;
         private Button button1;
-        private Button button2;
+        private Button Restart_button;
+        private Label Conflicto_label;
+        private Button Presimulacion_conflict_button;
+        private Panel panel5;
+        private DataGridView Flights_View;
+        private Panel panel6;
+        private Label label1;
+        private Button Import_flightplan_button;
     }
 }

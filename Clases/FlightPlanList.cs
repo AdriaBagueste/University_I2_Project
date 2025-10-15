@@ -13,8 +13,7 @@ namespace FlightLib
 
         public int AddFlightPlan(FlightPlan p) //ingresas un vuelo
         {
-            if (number == 10) // si el vector está lleno
-            { return -1; }
+            if (number == 10) return -1;// si el vector está lleno
             else
             {
                 vector[number] = p;
@@ -23,28 +22,26 @@ namespace FlightLib
             }
         }
 
-        public FlightPlan GetFlightPlan(int i)
+        public FlightPlan GetFlightPlan(int index)
         {
-            if (i < 0 || i >= number)
-            { return null; }
-            else
-                return vector[i];
+            if (index < 0 || index >= number) return null;
+            else return vector[index];
         }
-
-        public void Mover(double tiempo) //mueve todos los vuelos el tiempo que se recibe como parámetro
+      
+        public void Move(double Time) //mueve todos los vuelos el tiempo que se recibe como parámetro
         {
             int i = 0;
             while (i < number)
             {
-                vector[i].Mover(tiempo);
+                vector[i].Mover(Time);
                 i++;
             }
         }
 
-        public int DameNum()
+        public int GetNum()
         { return this.number; }
 
-        public void EscribeConsola()
+        public void WriteConsole()
         {
             int i = 0;
             while (i < number)
@@ -54,7 +51,13 @@ namespace FlightLib
             }
         }
 
-        public bool[,] Conflicto(double distanciaSeguridad)
+        public void Restart_Flights()
+        {
+            for(int i = 0; i < number; i++)
+            { vector[i].Restart(); }
+        }
+
+        public bool[,] Conflict(double distanciaSeguridad)
         {
             bool[,] pareja = new bool[number, number]; //son paquetillos de parejitas de planes
 
