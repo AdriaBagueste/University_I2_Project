@@ -60,8 +60,33 @@ namespace Interface
 
         private void Automatic_button_click(object sender, EventArgs e)
         {
-            if (press == false)
+            if (!press)
             {
+                bool hasConflict = CheckFutureConflicts(out int flightAIndex, out int flightBIndex);
+
+                if (hasConflict)
+                {
+                    DialogResult result = MessageBox.Show(
+                        $"Se detectó un conflicto entre los vuelos {FlightList.GetFlightPlan(flightAIndex).getId()} y {FlightList.GetFlightPlan(flightBIndex).getId()}.\n¿Deseas ajustar automáticamente la velocidad de uno de los vuelos para evitarlo?",
+                        "Conflicto detectado",
+                        MessageBoxButtons.YesNo,
+                        MessageBoxIcon.Warning);
+
+                    if (result == DialogResult.Yes)
+                    {
+                        FlightPlan vueloA = FlightList.GetFlightPlan(flightAIndex);
+                        FlightPlan vueloB = FlightList.GetFlightPlan(flightBIndex);
+
+                        vueloB.SetVelocidad(vueloB.getVel() * 0.8);
+
+                        MessageBox.Show(
+                            $"La velocidad del vuelo {vueloB.getId()} se ajustó de manera automática a {vueloB.getVel()} para evitar el conflicto.",
+                            "Velocidad ajustada",
+                            MessageBoxButtons.OK,
+                            MessageBoxIcon.Information);
+                    }
+                }
+
                 reloj.Start();
                 Automatic_button.Text = "Parar";
                 press = true;
@@ -69,9 +94,64 @@ namespace Interface
             else
             {
                 reloj.Stop();
-                Automatic_button.Text = "Automatico";
+                Automatic_button.Text = "Automático";
                 press = false;
             }
+        }
+        private bool CheckFutureConflicts(out int flightAIndex, out int flightBIndex)
+        {
+            flightAIndex = -1;
+            flightBIndex = -1;
+
+            int n = FlightList.GetNum();
+            if (n < 2) return false;
+
+            // Copia de los vuelos para simular sin afectar la lista real
+            var tempList = new FlightPlanList();
+            for (int i = 0; i < n; i++)
+            {
+                var f = FlightList.GetFlightPlan(i);
+                FlightPlan copy = new FlightPlan(f.getId(),
+                                                 f.getCurrentPosition().GetX(),
+                                                 f.getCurrentPosition().GetY(),
+                                                 f.getFinalPosition().GetX(),
+                                                 f.getFinalPosition().GetY(),
+                                                 f.getVel());
+                tempList.AddFlightPlan(copy);
+            }
+
+            bool anyMoving = true;
+            while (anyMoving)
+            {
+                tempList.Move(1);
+                bool[,] conflicts = tempList.Conflict(SafeDistance);
+
+                for (int i = 0; i < n; i++)
+                {
+                    for (int j = i + 1; j < n; j++)
+                    {
+                        if (conflicts[i, j])
+                        {
+                            flightAIndex = i;
+                            flightBIndex = j;
+                            return true;
+                        }
+                    }
+                }
+
+                // Comprobar si todos han llegado a destino
+                anyMoving = false;
+                for (int i = 0; i < n; i++)
+                {
+                    if (!tempList.GetFlightPlan(i).HasArrived())
+                    {
+                        anyMoving = true;
+                        break;
+                    }
+                }
+            }
+
+            return false;
         }
 
         private void reloj_Tick(object sender, EventArgs e)
@@ -311,30 +391,62 @@ namespace Interface
 
         private void Presimulacion_conflict_button_Click(object sender, EventArgs e)
         {
-            bool hasConflict = false;
-            bool[,] conflicts = FlightList.Conflict(SafeDistance);
-
-            for (int i = 0; i < numPics && !hasConflict; i++)
+            int n = FlightList.GetNum();
+            if (n < 2)
             {
-                var flightA = FlightList.GetFlightPlan(i);
-                if (flightA == null) continue;
+                MessageBox.Show("Se necesitan al menos dos vuelos para detectar conflictos.",
+                                "Información", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                return;
+            }
 
-                for (int j = i + 1; j < numPics; j++) // check only upper triangle (avoid duplicates)
+            var tempList = new FlightPlanList();
+            for (int i = 0; i < n; i++)
+            {
+                var f = FlightList.GetFlightPlan(i);
+                FlightPlan copy = new FlightPlan(f.getId(),
+                                                 f.getCurrentPosition().GetX(),
+                                                 f.getCurrentPosition().GetY(),
+                                                 f.getFinalPosition().GetX(),
+                                                 f.getFinalPosition().GetY(),
+                                                 f.getVel());
+                tempList.AddFlightPlan(copy);
+            }
+
+            bool hasConflict = false;
+
+            bool anyMoving = true;
+            while (anyMoving && !hasConflict)
+            {
+                tempList.Move(1);
+                bool[,] conflicts = tempList.Conflict(SafeDistance);
+
+                for (int i = 0; i < n; i++)
                 {
-                    var flightB = FlightList.GetFlightPlan(j);
-                    if (flightB == null) continue;
-
-                    if (conflicts[i, j])
+                    for (int j = i + 1; j < n; j++)
                     {
-                        hasConflict = true;
+                        if (conflicts[i, j])
+                        {
+                            hasConflict = true;
+                            break;
+                        }
+                    }
+                    if (hasConflict) break;
+                }
+
+                anyMoving = false;
+                for (int i = 0; i < n; i++)
+                {
+                    if (!tempList.GetFlightPlan(i).HasArrived())
+                    {
+                        anyMoving = true;
                         break;
                     }
                 }
             }
 
             MessageBox.Show(hasConflict
-                ? "Sí habrá conflictos"
-                : "No habrá conflictos");
+                ? "Sí habrá conflictos durante la simulación."
+                : "No habrá conflictos.");
         }
 
         private void Import_flightplan_button_Click(object sender, EventArgs e)

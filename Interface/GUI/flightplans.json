@@ -12,18 +12,6 @@
     }
   },
   {
-    "Id": "IB-322",
-    "Velocidad": 50,
-    "PosicionInicial": {
-      "X": 700,
-      "Y": 600
-    },
-    "PosicionFinal": {
-      "X": 50,
-      "Y": 100
-    }
-  },
-  {
     "Id": "IB-431",
     "Velocidad": 50,
     "PosicionInicial": {

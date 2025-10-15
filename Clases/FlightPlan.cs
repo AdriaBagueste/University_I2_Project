@@ -73,7 +73,7 @@ namespace FlightLib
         {
             this.currentPosition = this.initialPosition;
         }
-        public bool EstaDestino()
+        public bool HasArrived()
         {
             bool resultado = false;
             if (currentPosition == finalPosition)
@@ -106,7 +106,7 @@ namespace FlightLib
             // Escribir datos reales con solo dos decimales (F2 -> float con 2 decimales)
             Console.WriteLine("Velocidad: {0:F2}", velocidad);
             Console.WriteLine("Posición actual: ({0:F2},{1:F2})", currentPosition.GetX(), currentPosition.GetY());
-            if (this.EstaDestino())
+            if (this.HasArrived())
                 Console.WriteLine("Ha llegado al destino");
             Console.WriteLine("******************************");
         }
