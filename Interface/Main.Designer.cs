@@ -83,10 +83,10 @@ namespace Interface
             // 
             miPanel.BackColor = SystemColors.AppWorkspace;
             miPanel.Font = new System.Drawing.Font("Segoe UI", 16F, FontStyle.Regular, GraphicsUnit.Point, 0);
-            miPanel.Location = new Point(376, 31);
+            miPanel.Location = new Point(101, 24);
             miPanel.Margin = new Padding(2);
             miPanel.Name = "miPanel";
-            miPanel.Size = new Size(966, 785);
+            miPanel.Size = new Size(961, 612);
             miPanel.TabIndex = 0;
             miPanel.MouseLeave += miPanel_MouseLeave;
             miPanel.MouseMove += miPanel_MouseMove;
@@ -94,10 +94,10 @@ namespace Interface
             // posicionLbl
             // 
             posicionLbl.BorderStyle = BorderStyle.FixedSingle;
-            posicionLbl.Location = new Point(376, 0);
+            posicionLbl.Location = new Point(101, 0);
             posicionLbl.Margin = new Padding(2, 0, 2, 0);
             posicionLbl.Name = "posicionLbl";
-            posicionLbl.Size = new Size(966, 29);
+            posicionLbl.Size = new Size(961, 22);
             posicionLbl.TabIndex = 5;
             posicionLbl.TextAlign = ContentAlignment.MiddleCenter;
             // 
@@ -108,7 +108,7 @@ namespace Interface
             menuStrip1.Location = new Point(0, 0);
             menuStrip1.Name = "menuStrip1";
             menuStrip1.Padding = new Padding(4, 1, 0, 1);
-            menuStrip1.Size = new Size(1904, 24);
+            menuStrip1.Size = new Size(1628, 24);
             menuStrip1.TabIndex = 6;
             menuStrip1.Text = "menuStrip1";
             // 
@@ -150,9 +150,9 @@ namespace Interface
             // tableLayoutPanel1
             // 
             tableLayoutPanel1.ColumnCount = 3;
-            tableLayoutPanel1.ColumnStyles.Add(new ColumnStyle(SizeType.Percent, 27.7397251F));
-            tableLayoutPanel1.ColumnStyles.Add(new ColumnStyle(SizeType.Percent, 72.26028F));
-            tableLayoutPanel1.ColumnStyles.Add(new ColumnStyle(SizeType.Absolute, 555F));
+            tableLayoutPanel1.ColumnStyles.Add(new ColumnStyle(SizeType.Percent, 9.347181F));
+            tableLayoutPanel1.ColumnStyles.Add(new ColumnStyle(SizeType.Percent, 90.65282F));
+            tableLayoutPanel1.ColumnStyles.Add(new ColumnStyle(SizeType.Absolute, 558F));
             tableLayoutPanel1.Controls.Add(panel1, 0, 1);
             tableLayoutPanel1.Controls.Add(miPanel, 1, 1);
             tableLayoutPanel1.Controls.Add(posicionLbl, 1, 0);
@@ -165,15 +165,15 @@ namespace Interface
             tableLayoutPanel1.RowCount = 3;
             tableLayoutPanel1.RowStyles.Add(new RowStyle(SizeType.Percent, 3.54691076F));
             tableLayoutPanel1.RowStyles.Add(new RowStyle(SizeType.Percent, 96.45309F));
-            tableLayoutPanel1.RowStyles.Add(new RowStyle(SizeType.Absolute, 196F));
-            tableLayoutPanel1.Size = new Size(1904, 1015);
+            tableLayoutPanel1.RowStyles.Add(new RowStyle(SizeType.Absolute, 375F));
+            tableLayoutPanel1.Size = new Size(1623, 1014);
             tableLayoutPanel1.TabIndex = 9;
             // 
             // panel1
             // 
-            panel1.Location = new Point(3, 32);
+            panel1.Location = new Point(3, 25);
             panel1.Name = "panel1";
-            panel1.Size = new Size(366, 783);
+            panel1.Size = new Size(93, 610);
             panel1.TabIndex = 0;
             // 
             // tableLayoutPanel2
@@ -184,12 +184,12 @@ namespace Interface
             tableLayoutPanel2.Controls.Add(panel2, 0, 0);
             tableLayoutPanel2.Controls.Add(panel3, 1, 0);
             tableLayoutPanel2.Controls.Add(panel4, 0, 1);
-            tableLayoutPanel2.Location = new Point(377, 821);
+            tableLayoutPanel2.Location = new Point(102, 641);
             tableLayoutPanel2.Name = "tableLayoutPanel2";
             tableLayoutPanel2.RowCount = 2;
             tableLayoutPanel2.RowStyles.Add(new RowStyle(SizeType.Percent, 46.59686F));
             tableLayoutPanel2.RowStyles.Add(new RowStyle(SizeType.Percent, 53.40314F));
-            tableLayoutPanel2.Size = new Size(964, 191);
+            tableLayoutPanel2.Size = new Size(959, 191);
             tableLayoutPanel2.TabIndex = 6;
             // 
             // panel2
@@ -202,7 +202,7 @@ namespace Interface
             panel2.Controls.Add(Controles_label);
             panel2.Location = new Point(3, 3);
             panel2.Name = "panel2";
-            panel2.Size = new Size(711, 83);
+            panel2.Size = new Size(707, 83);
             panel2.TabIndex = 2;
             // 
             // Presimulacion_conflict_button
@@ -252,9 +252,9 @@ namespace Interface
             panel3.Controls.Add(Safe_distance_info_label);
             panel3.Controls.Add(Tick_speed_info_label);
             panel3.Controls.Add(Info_label);
-            panel3.Location = new Point(720, 3);
+            panel3.Location = new Point(716, 3);
             panel3.Name = "panel3";
-            panel3.Size = new Size(241, 83);
+            panel3.Size = new Size(240, 83);
             panel3.TabIndex = 3;
             // 
             // Conflicto_label
@@ -310,7 +310,7 @@ namespace Interface
             panel4.Controls.Add(Config_label);
             panel4.Location = new Point(3, 92);
             panel4.Name = "panel4";
-            panel4.Size = new Size(711, 96);
+            panel4.Size = new Size(707, 96);
             panel4.TabIndex = 4;
             // 
             // Safe_distance_units_label
@@ -386,9 +386,9 @@ namespace Interface
             // panel5
             // 
             panel5.Controls.Add(Flights_View);
-            panel5.Location = new Point(1351, 32);
+            panel5.Location = new Point(1067, 25);
             panel5.Name = "panel5";
-            panel5.Size = new Size(550, 783);
+            panel5.Size = new Size(550, 610);
             panel5.TabIndex = 7;
             // 
             // Flights_View
@@ -398,22 +398,21 @@ namespace Interface
             Flights_View.Name = "Flights_View";
             Flights_View.Size = new Size(547, 777);
             Flights_View.TabIndex = 0;
-            Flights_View.CellClick += Flights_View_CellClick; 
-
+            Flights_View.CellClick += Flights_View_CellClick;
             // 
             // panel6
             // 
             panel6.Controls.Add(label1);
-            panel6.Location = new Point(1351, 3);
+            panel6.Location = new Point(1067, 3);
             panel6.Name = "panel6";
-            panel6.Size = new Size(550, 23);
+            panel6.Size = new Size(550, 16);
             panel6.TabIndex = 8;
             // 
             // label1
             // 
             label1.Anchor = AnchorStyles.None;
             label1.BorderStyle = BorderStyle.FixedSingle;
-            label1.Location = new Point(3, 0);
+            label1.Location = new Point(3, -3);
             label1.Name = "label1";
             label1.Size = new Size(547, 26);
             label1.TabIndex = 0;
@@ -423,7 +422,7 @@ namespace Interface
             // Import_flightplan_button
             // 
             Import_flightplan_button.ImageAlign = ContentAlignment.BottomLeft;
-            Import_flightplan_button.Location = new Point(1351, 821);
+            Import_flightplan_button.Location = new Point(1067, 641);
             Import_flightplan_button.Name = "Import_flightplan_button";
             Import_flightplan_button.Size = new Size(75, 23);
             Import_flightplan_button.TabIndex = 9;
@@ -433,17 +432,19 @@ namespace Interface
             // 
             // Main
             // 
-            AutoScaleDimensions = new SizeF(7F, 15F);
-            AutoScaleMode = AutoScaleMode.Font;
+            AutoScaleDimensions = new SizeF(96F, 96F);
+            AutoScaleMode = AutoScaleMode.Dpi;
+            AutoSize = true;
+            AutoSizeMode = AutoSizeMode.GrowAndShrink;
             BackColor = SystemColors.Control;
-            ClientSize = new Size(1904, 1041);
+            ClientSize = new Size(1628, 865);
             Controls.Add(tableLayoutPanel1);
             Controls.Add(menuStrip1);
             MainMenuStrip = menuStrip1;
             Margin = new Padding(2);
             Name = "Main";
-            Text = "Principal";
-            WindowState = FormWindowState.Maximized;
+            Text = "Main";
+            WindowState = FormWindowState.Minimized;
             Load += Main_Load;
             menuStrip1.ResumeLayout(false);
             menuStrip1.PerformLayout();

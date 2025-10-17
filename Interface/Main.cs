@@ -24,7 +24,7 @@ namespace Interface
             reloj.Interval = 100;
         }
         private void Main_Load(object sender, EventArgs e)
-        { this.WindowState = FormWindowState.Maximized; }
+        { }
 
         private void config_change()
         {
